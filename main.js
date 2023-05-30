@@ -18,24 +18,25 @@ class ticTac{
         }else{
             this.symbol = 'o';
             counterO.setAttribute('class', 'counter__selected');
-            counterX.setAttribute('class', 'counter counter-');
+            counterX.setAttribute('class', 'counter counter-x');
         }
+    }
+    changeSymbol(symbol){
+        this.symbol = symbol
     }
     drawSymbol(button){
         if (this.symbol === '') return
         else if(this.symbol === 'x'){
             button.textContent = 'X';
-            this.symbol = 'o';
-            this.changeInitialSymbol(counterO);
+            this.changeSymbol('o');
             this.storePlay(button);
-            this. winCondition()
         } else {
             button.textContent = 'O';
-            this.symbol = 'x';
-            this.changeInitialSymbol(counterX);
+            this.changeSymbol('x');
             this.storePlay(button);
-            this. winCondition()
         }
+        this.winConditionX();
+        this.winConditionO();
     }
     storePlay(button){
         if(this.symbol === 'o'){
@@ -45,10 +46,95 @@ class ticTac{
         }
         console.log(this.arrayX , this.arrayO)
     }
-    winCondition(){
-        if(this.arrayX.includes('1' && '2' && '3' || '3' && '6' && '9' || '1' && '4' && '7' || '7' && '8' && '9' || '7' && '5' && '3' || '1' && '5' && '9')){
-            scoreX.textContent += '1'
+    winConditionX(){
+        if (this.arrayX.includes('1') &&
+        this.arrayX.includes('2') &&
+        this.arrayX.includes('3')){
+            this.winX();
         }
+        else if (this.arrayX.includes('1') &&
+        this.arrayX.includes('5') &&
+        this.arrayX.includes('9')){
+            this.winX();
+        }
+        else if (this.arrayX.includes('1') &&
+        this.arrayX.includes('4') &&
+        this.arrayX.includes('7')){
+            this.winX();
+        }
+        else if (this.arrayX.includes('2') &&
+        this.arrayX.includes('5') &&
+        this.arrayX.includes('8')){
+            this.winX();
+        }
+        else if (this.arrayX.includes('3') &&
+        this.arrayX.includes('6') &&
+        this.arrayX.includes('9')){
+            this.winX();
+        }
+        else if (this.arrayX.includes('4') &&
+        this.arrayX.includes('5') &&
+        this.arrayX.includes('6')){
+            this.winX();
+        }
+        else if (this.arrayX.includes('7') &&
+        this.arrayX.includes('8') &&
+        this.arrayX.includes('9')){
+            this.winX();
+        }
+        else if (this.arrayX.includes('7') &&
+        this.arrayX.includes('5') &&
+        this.arrayX.includes('3')){
+            this.winX();
+        }
+    }
+    winConditionO(){
+        if (this.arrayO.includes('1') &&
+        this.arrayO.includes('2') &&
+        this.arrayO.includes('3')){
+            this.winO();
+        }
+        else if (this.arrayO.includes('1') &&
+        this.arrayO.includes('5') &&
+        this.arrayO.includes('9')){
+            this.winO();
+        }
+        else if (this.arrayO.includes('1') &&
+        this.arrayO.includes('4') &&
+        this.arrayO.includes('7')){
+            this.winO();
+        }
+        else if (this.arrayO.includes('2') &&
+        this.arrayO.includes('5') &&
+        this.arrayO.includes('8')){
+            this.winO();
+        }
+        else if (this.arrayO.includes('3') &&
+        this.arrayO.includes('6') &&
+        this.arrayO.includes('9')){
+            this.winO();
+        }
+        else if (this.arrayO.includes('4') &&
+        this.arrayO.includes('5') &&
+        this.arrayO.includes('6')){
+            this.winO();
+        }
+        else if (this.arrayO.includes('7') &&
+        this.arrayO.includes('8') &&
+        this.arrayO.includes('9')){
+            this.winO();
+        }
+        else if (this.arrayO.includes('7') &&
+        this.arrayO.includes('5') &&
+        this.arrayO.includes('3')){
+            this.winO();
+        }
+    }
+    winO(){
+        window.alert('Jugador O gana')
+    }
+    winX(){
+        window.alert('Jugador X gana')
     }
 }
 
