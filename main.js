@@ -9,6 +9,7 @@ class ticTac{
         this.symbol = '';
         this.arrayX = [];
         this.arrayO = [];
+        this.win = undefined
     }
     changeInitialSymbol(button){
         if(button === counterX){
@@ -25,7 +26,7 @@ class ticTac{
         this.symbol = symbol
     }
     drawSymbol(button){
-        if (this.symbol === '') return
+        if (this.symbol === '')return
         else if(this.symbol === 'x'){
             button.textContent = 'X';
             this.changeSymbol('o');
@@ -131,10 +132,24 @@ class ticTac{
         }
     }
     winO(){
-        window.alert('Jugador O gana')
+        window.alert('Jugador O gana');
+        this.symbol = '';
+        this.win = 'o';
+        this.clearGame()
     }
     winX(){
-        window.alert('Jugador X gana')
+        window.alert('Jugador X gana');
+        this.symbol = '';
+        this.win = 'x';
+        this.clearGame();
+    }
+    clearGame(){
+            gameButton.forEach((bt) => bt.innerText = '');
+            this.symbol = '';
+            this.arrayO = [];
+            this.arrayX = [];
+            counterO.setAttribute('class', 'counter counter-o');
+            counterX.setAttribute('class', 'counter counter-x');
     }
 }
 
@@ -145,6 +160,6 @@ counterO.addEventListener('click', ()=>game.changeInitialSymbol(counterO));
 
 gameButton.forEach(
     (button)=>button.addEventListener('click', ()=>{
-        game.drawSymbol(button);
-})
+        game.drawSymbol(button)}),
 )
+
