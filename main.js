@@ -6,6 +6,7 @@ const counterO = document.querySelector('.counter-o');
 
 class ticTac{
     constructor(){
+        this.initialSymbol = '';
         this.symbol = '';
         this.arrayX = [];
         this.arrayO = [];
@@ -36,8 +37,8 @@ class ticTac{
             this.changeSymbol('x');
             this.storePlay(button);
         }
-        this.winConditionX();
-        this.winConditionO();
+        this.checkWinConditionX();
+        this.checkWinConditionO();
     }
     storePlay(button){
         if(this.symbol === 'o'){
@@ -47,7 +48,7 @@ class ticTac{
         }
         console.log(this.arrayX , this.arrayO)
     }
-    winConditionX(){
+    checkWinConditionX(){
         if (this.arrayX.includes('1') &&
         this.arrayX.includes('2') &&
         this.arrayX.includes('3')){
@@ -89,7 +90,7 @@ class ticTac{
             this.winX();
         }
     }
-    winConditionO(){
+    checkWinConditionO(){
         if (this.arrayO.includes('1') &&
         this.arrayO.includes('2') &&
         this.arrayO.includes('3')){
@@ -132,15 +133,11 @@ class ticTac{
         }
     }
     winO(){
-        window.alert('Jugador O gana');
-        this.symbol = '';
-        this.win = 'o';
+        window.alert('Player O wins');
         this.clearGame()
     }
     winX(){
-        window.alert('Jugador X gana');
-        this.symbol = '';
-        this.win = 'x';
+        window.alert('Player X wins');
         this.clearGame();
     }
     clearGame(){
